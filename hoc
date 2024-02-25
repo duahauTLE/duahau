@@ -6,6 +6,7 @@ using namespace std;
   set <ll> xet1;
   set <ll> xet2;
   vector <ll> v;
+  ll sang[100001];
 bool nguyen_to(ll k)  
   {
     if (k==1||k==0)
@@ -87,9 +88,34 @@ ll binary_search_first(ll a[], ll n , ll x)
     return res;
   }
 }
+void sang_nguyen_to()
+{
+    for (int i=0 ;i < 100001 ;i=i+1)
+    {
+      sang[i]=1;
+    }
+    sang[0]=sang[1]=0;
+
+    for (int i=2 ; i<=sqrt(100001) ; i =i+1)
+    {
+      for (int j=i*i ;j<100000 ;j=j+i)
+      {
+        sang[j]=0;
+      }
+    }
+
+
+}
  void solve() {
   
-
+sang_nguyen_to();
+for (int i=0 ;i < 10000 ;i=i+1)
+{
+  if (sang[i]==1)
+  {
+    cout << i << " ";
+  }
+}
 
 
 
