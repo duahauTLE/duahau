@@ -1,0 +1,147 @@
+#include <bits/stdc++.h>
+using namespace std;
+  #define ll long long int
+  #define pi acos(-1)
+  map <ll,ll> maps;
+  set <ll> xet1;
+  set <ll> xet2;
+  vector <ll> v;
+bool nguyen_to(ll k)  
+  {
+    if (k==1||k==0)
+    {
+      return false;
+    }
+    for ( int i=2 ; i <=sqrt(k);i=i+1)
+    {
+      if ( k%i==0)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
+ll giai_thua (ll n)
+  {
+    ll tich =n;
+    if ( n==1)
+    {
+      return tich;
+    }
+    return tich*giai_thua(n-1);
+  }
+bool chinh_phuong( ll n)
+
+  {
+      ll a = sqrt(n);
+      if (a*a==n)
+      {
+        return true;
+      }
+      else return false;
+  }
+bool binary_search(ll a[] , ll n, ll x)
+{
+ll l=0 , r=n-1 ,mid;
+sort (a,a+n);
+while (l<=r)
+{
+  mid = (l+r)/2;
+  if (a[mid]==x)
+  {
+    return true;
+  }
+  else if ( a[mid]>x)
+  {
+        
+        r=mid-1;
+  }
+  else 
+  {
+    l = mid +1;
+    
+  }
+}
+return false;
+}
+ll binary_search_first(ll a[], ll n , ll x)
+{
+  sort (a,a+n);
+  ll l=0 , r=n-1 , mid;
+  ll res = -1;
+  while (l<=r)
+  {
+    mid = ( l+r)/2;
+      if (a[mid]==x)
+      {
+        res=mid;
+      }
+      else if ( a[mid] > x)
+      {
+          r=mid-1;
+      }
+      else 
+      {
+        l = mid +1;
+      }
+    return res;
+  }
+}
+ void solve() {
+  
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+   
+
+
+
+   
+
+
+
+
+
+    
+     
+
+
+
+
+
+ }
+  void test()
+
+  {
+    ll t;
+    cin >> t;
+    cin.ignore();
+    while(t--)
+    {
+      solve();
+      cout << endl;
+    }
+  }
+  int main()
+  {
+  ios_base::sync_with_stdio(false); cin.tie(NULL);
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
+  #endif
+
+
+
+
+  solve();
+  }
