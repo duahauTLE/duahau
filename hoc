@@ -7,6 +7,46 @@ using namespace std;
   set <ll> xet2;
   vector <ll> v;
   ll sang[100001];
+  ll F[92];
+bool thuan_nghich(string s)
+{
+      for (int i=0 ,j=s.size()-1 ; i<= (s.size()-1)/2 , j>=(s.size()-1)/2;i=i+1,j=j-1)
+      {
+        if (s[i]!=s[j])
+        {
+          return false;
+        }
+        else return true;
+      }
+}
+ll tong_chu_so(ll n)
+{
+    string s = to_string(n);
+    ll x,sum=0;
+    for (int i=0 ; i < s.size();i=i+1)
+    {
+      x= s[i]-'0';
+      sum=sum+x;
+    }
+    return sum;
+}
+bool fibonacci(ll n)
+{
+   F[0]=0 , F[1]=1;
+  for (int i= 2; i <=92 ;i=i+1)
+  {
+        F[i]=F[i-1]+F[i-2];
+  }
+    for (int i= 0; i <=92 ;i=i+1)
+    {
+          if(n==F[i])
+          {
+            return true;
+          }
+    }
+    return false;
+  
+}
 bool nguyen_to(ll k)  
   {
     if (k==1||k==0)
@@ -22,15 +62,13 @@ bool nguyen_to(ll k)
     }
     return true;
   }
-ll giai_thua (ll n)
-  {
-    ll tich =n;
-    if ( n==1)
-    {
-      return tich;
+ll giai_thua(int n) {
+    ll tich = 1;
+    for (int i = 1; i <= n; ++i) {
+        tich *= i;
     }
-    return tich*giai_thua(n-1);
-  }
+    return tich;
+}
 bool chinh_phuong( ll n)
 
   {
@@ -90,7 +128,7 @@ ll binary_search_first(ll a[], ll n , ll x)
 }
 void sang_nguyen_to()
 {
-    for (int i=0 ;i < 100001 ;i=i+1)
+    for (int i=0 ;i <100001 ;i=i+1)
     {
       sang[i]=1;
     }
