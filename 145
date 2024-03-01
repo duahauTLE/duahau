@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+#define ll long long int
+
+int main() {
+    ll n;
+    scanf("%lld", &n);
+
+    for (int i = 1; i <= n; i = i + 1) {
+        for (int j = 2; j <= 2 * i; j = j + 2) {
+            printf("%d", j);
+        }
+        for (int k = 2 * i - 2; k >= 2; k = k - 2) {
+            printf("%d", k);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
