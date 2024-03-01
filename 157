@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define ll long long int
+
+ll dp[10001];
+
+bool thuan_nghich(char *s) {
+    int len = 0;
+    while (s[len] != '\0') len++;
+    
+    if (len == 1) {
+        return true;
+    }
+
+    for (int i = 0, j = len - 1; i <= len / 2, j >= len / 2; i++, j--) {
+        if (s[i] != s[j]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check(char *s) {
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == '9') {
+            return false;
+        }
+    }
+    return true;
+}
+
+void quyhoachdong() {
+    for (int i = 2; i <= 9999; i++) {
+        dp[i] = i;
+        char s[20];
+        sprintf(s, "%d", dp[i]);
+        if (!check(s) || !thuan_nghich(s)) {
+            dp[i] = 0;
+        }
+    }
+}
+
+int main() {
+    quyhoachdong();
+    ll dem = 0;
+    ll n;
+    scanf("%lld", &n);
+
+    for (int i = 2; i <= n; i++) {
+        if (dp[i] == 0) {
+            continue;
+        } else {
+            printf("%d ", i);
+            dem++;
+        }
+    }
+    printf("\n%lld\n", dem);
+    return 0;
+}
