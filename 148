@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+#define ll long long int
+
+int main() {
+    ll n;
+    scanf("%lld", &n);
+    ll dem = 0, tang = 1;
+
+    for (int i = 1; i <= n; i = i + 1) {
+        if (i % 2 != 0) {
+            for (int j = 1; j <= i; j = j + 1) {
+                printf("%lld ", i * dem + j);
+            }
+            dem = dem + 1;
+        } else {
+            for (int k = 0; k <= i - 1; k = k + 1) {
+                ll ngu = i * tang + tang;
+                printf("%lld ", ngu - k);
+            }
+            tang = tang + 1;
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
