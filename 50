@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+void ham(long long int n, long long int m) {
+    for (int i = n; i >= 1; i--) {
+        for (int j = i; j <= m - 1; j++) {
+            printf("%c", (char)(j + 64));
+        }
+        for (int k = 1; k <= i; k++) {
+            printf("%c", (char)(m + 64));
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    if (n <= m) {
+        ham(n, m);
+    } else if (n > m) {
+        for (int z = 1; z <= n - m; z++) {
+            for (int q = 1; q <= m; q++) {
+                printf("%c", (char)(m + 64));
+            }
+            printf("\n");
+        }
+        ham(m, m);
+    }
+    return 0;
+}
