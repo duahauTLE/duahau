@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    long long int n;
+    scanf("%lld", &n);
+    for (int i = n; i >= 1; i = i - 1) {
+        for (int j = i; j <= 2 * i - 1; j = j + 1) {
+            printf("%c", (char)(j + 63));
+        }
+        printf("\n");
+    }
+    return 0;
+}
