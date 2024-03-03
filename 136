@@ -1,0 +1,43 @@
+//136
+#include <stdio.h>
+#include <math.h>
+
+#define ll long long int
+
+ll sang[10000];
+ll k=0;
+
+void thuaso(ll n)
+{
+    for (int i=2; i <= sqrt(n); i=i+1)
+    {
+        while (n%i==0)
+        {
+            sang[k++]=i;
+            n=n/i;
+        }
+    }
+    if (n > 1)
+    {
+        sang[k++]=n;
+    }
+}
+
+int main()
+{
+    ll n;
+    scanf("%lld", &n);
+    thuaso(n);
+    for (int i=0; i<k; i=i+1)
+    {
+        if (i==k-1)
+        {
+            printf("%lld", sang[k-1]);
+        }
+        else
+        {
+            printf("%lldx", sang[i]);
+        }
+    }
+    return 0;
+}
