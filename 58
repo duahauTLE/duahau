@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <math.h>
+
+#define ll long long int
+
+int main() {
+    ll t;
+    scanf("%lld", &t);
+
+    ll k = 1;
+    while (t--) {
+        ll n;
+        scanf("%lld", &n);
+        
+        ll i;
+        ll maps[100000] = {0}; // Khởi tạo mảng lưu số lần xuất hiện của các số nguyên tố
+
+        for (i = 2; i <= sqrt(n); i++) {
+            while (n % i == 0) {
+                maps[i]++;
+                n = n / i;
+            }
+        }
+        
+        if (n > 1) {
+            maps[n]++;
+        }
+
+        printf("Test %lld: ", k);
+        for (i = 0; i < 100000; i++) {
+            if (maps[i] != 0) {
+                printf("%lld(%lld) ", i, maps[i]);
+            }
+        }
+        printf("\n");
+        k++;
+    }
+
+    return 0;
+}
