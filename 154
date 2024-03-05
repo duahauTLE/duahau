@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+bool thuan_nghich(int n) {
+    int temp = n, reverse = 0;
+    while (temp != 0) {
+        reverse = reverse * 10 + temp % 10;
+        temp /= 10;
+    }
+    return reverse == n;
+}
+
+bool tong_chu_so(int n) {
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum % 10 == 0;
+}
+
+int count_beautiful_numbers(int n) {
+    int count = 0;
+    int lower_bound = pow(10, n - 1);
+    int upper_bound = pow(10, n);
+    for (int i = lower_bound; i < upper_bound; i++) {
+        if (thuan_nghich(i) && tong_chu_so(i)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int t;
+    scanf("%d", &t); 
+    while (t--) {
+        int n;
+        scanf("%d", &n);
+        printf("%d\n", count_beautiful_numbers(n));
+    }
+    return 0;
+}
