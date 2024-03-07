@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+#define ll long long
+
+int main() {
+    ll t;
+    scanf("%lld", &t);
+
+    while (t--) {
+        ll n;
+        scanf("%lld", &n);
+
+        ll a[n];
+        for (int i = 0; i < n; i++) {
+            scanf("%lld", &a[i]);
+        }
+
+       
+        int maps[n];
+        for (int i = 0; i < n; i++) {
+            maps[i] = 0;
+        }
+
+        for (int i = 0; i < n; i++) {
+            maps[a[i]]++;
+        }
+
+   
+        ll value = 0;
+        for (int i = 0; i < n; i++) {
+            if (maps[i] >= value) {
+                value = maps[i];
+            }
+        }
+
+      
+        for (int i = 0; i < n; i++) {
+            if (maps[a[i]] != 0 && maps[a[i]] == value) {
+                printf("%lld ", a[i]);
+                maps[a[i]] = 0;
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
