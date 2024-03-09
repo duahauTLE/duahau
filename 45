@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    long long int n, m;
+    scanf("%lld %lld", &n, &m);
+
+    for (int i = 1; i <= n; i = i + 1) {
+        if (i <= m) {
+            for (int j = i; j > 1; j = j - 1) {
+                printf("%d", j);
+            }
+            for (int k = 1; k <= m - i + 1; k = k + 1) {
+                printf("%d", k);
+            }
+            printf("\n");
+        } else {
+            for (int x = 0; x < m; x = x + 1) {
+                printf("%d", i - x);
+            }
+            printf("\n");
+        }
+    }
+
+    return 0;
+}
