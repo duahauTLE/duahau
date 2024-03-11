@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main() {
+    long long int t;
+    scanf("%lld", &t);
+    long long int k = 1;
+    while (t--) {
+        long long int n, m;
+        scanf("%lld", &n);
+        m = n;
+        long long int a[n][m];
+        long long int cnt = n * n;
+
+        long long int h1 = 0, h2 = n - 1, c1 = 0, c2 = m - 1;
+        while (h1 <= h2 && c1 <= c2) {
+            for (int i = c1; i <= c2; i = i + 1) {
+                a[h1][i] = cnt;
+                cnt--;
+            }
+            h1++;
+            for (int i = h1; i <= h2; i = i + 1) {
+                a[i][c2] = cnt;
+                cnt--;
+            }
+            c2--;
+            for (int i = c2; i >= c1; i = i - 1) {
+                a[h2][i] = cnt;
+                cnt--;
+            }
+            h2--;
+
+            for (int i = h2; i >= h1; i = i - 1) {
+                a[i][c1] = cnt;
+                cnt--;
+            }
+
+            c1++;
+        }
+        printf("Test %lld:\n", k);
+        for (int i = 0; i < n; i = i + 1) {
+            for (int j = 0; j < m; j = j + 1) {
+                printf("%lld ", a[i][j]);
+            }
+            printf("\n");
+        }
+        k = k + 1;
+    }
+    return 0;
+}
