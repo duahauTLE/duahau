@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+#define ll long long int
+
+ll F[93]; 
+
+void fibonacci() {
+    F[0] = 0, F[1] = 1;
+    for (int i = 2; i <= 92; i = i + 1) { 
+        F[i] = F[i - 1] + F[i - 2];
+    }
+}
+
+int main() {
+    fibonacci();
+
+    ll cnt = 0;
+    ll n, m;
+    scanf("%lld", &n);
+    m = n;
+
+    ll a[n][m];
+
+    ll h1 = 0, h2 = n - 1, c1 = 0, c2 = m - 1;
+    while (h1 <= h2 && c1 <= c2) {
+        for (int i = c1; i <= c2; i = i + 1) {
+            a[h1][i] = F[cnt];
+            cnt++;
+        }
+        h1++;
+        for (int i = h1; i <= h2; i = i + 1) {
+            a[i][c2] = F[cnt];
+            cnt++;
+        }
+        c2--;
+        for (int i = c2; i >= c1; i = i - 1) {
+            a[h2][i] = F[cnt];
+            cnt++;
+        }
+        h2--;
+
+        for (int i = h2; i >= h1; i = i - 1) {
+            a[i][c1] = F[cnt];
+            cnt++;
+        }
+
+        c1++;
+    }
+
+    for (int i = 0; i < n; i = i + 1) {
+        for (int j = 0; j < m; j = j + 1) {
+            printf("%lld ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
