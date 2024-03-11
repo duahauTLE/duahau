@@ -2,7 +2,8 @@
 
 int main() {
     long long int n, m;
-    scanf("%lld %lld", &n, &m);
+    scanf("%lld %lld", &n);
+    m=n;
     long long int a[n][m];
     long long int cnt = 1;
 
