@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+#define ll long long int
+
+int sang[100001];
+
+void nguyento() {
+    for (int i = 0; i <= 100000; i++) {
+        sang[i] = 1;
+    }
+    sang[0] = sang[1] = 0;
+    for (int i = 2; i <= sqrt(100001); i++) {
+        for (int j = i * i; j <= sqrt(100001); j += i) {
+            sang[j] = 0;
+        }
+    }
+}
+
+int main() {
+    nguyento();
+
+    ll n;
+    scanf("%lld", &n);
+    ll a[n][n];
+    ll sum = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%lld", &a[i][j]);
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            if (sang[a[i][j]] == 1) {
+                sum += a[i][j];
+            }
+        }
+    }
+    printf("%lld", sum);
+
+    return 0;
+}
