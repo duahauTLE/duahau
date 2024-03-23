@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+#define ll long long int
+#define pi acos(-1)
+using namespace std;
+string chuyen(string s)
+{
+  for ( int i=0 ; i < s.size();i=i+1)
+  {
+    if (s[i]>='A'&&s[i]<='Z')
+    {
+      s[i]=s[i]+32;
+    }
+  }
+  return s;
+}
+int main ()
+{
+  ios_base::sync_with_stdio(false); cin.tie(NULL);
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
+  #endif
+
+  ll t; cin >> t;
+  ll k=1;
+  cin.ignore();
+  while (t--)
+  {
+    string s1 ; getline(cin , s1 );
+string s2; cin >> s2;
+vector < string > v1;
+vector < string > v2;
+string tu ; 
+stringstream ss(s1);
+while (ss>> tu)
+{
+  if(chuyen(s2) == chuyen(tu))
+  {
+continue ;
+
+  }
+  else{
+    v1.push_back(tu);
+  }
+}
+
+
+
+cout << "Test " << k  << ": ";
+
+
+for ( int i=0 ; i <v1.size();i=i+1)
+{
+  cout << v1[i] << " " ;
+}
+cout << endl;
+
+
+
+
+k=k+1;
+cin.ignore();
+  }
+}
